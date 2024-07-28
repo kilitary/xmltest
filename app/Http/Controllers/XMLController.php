@@ -2,25 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\XMLFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
-use App\Models\XMLFile;
 
 class XMLController extends Controller
 {
-    protected bool $syntax_error = FALSE;
+    protected bool $syntax_error = false;
 
-    function getJson($id)
+    public function getJson($id)
     {
         $xml = XMLFile::find($id);
         $json = json_encode($xml);
+
         return $json;
     }
 
-    function index()
+    public function index()
     {
         $xmls = XMLFile::all();
+
         return view('xml.index', compact('xmls'));
     }
 
@@ -31,47 +33,51 @@ class XMLController extends Controller
                 'file' => 'required|file|mimes:text/xml,xml,application/xml',
             ]);
         } catch (ValidationException  $e) {
-            return back()->with('error', 'Ошибка загрузки: ' . $e->getMessage());
+            return back()->with('error', 'Ошибка загрузки: '.$e->getMessage());
         }
         if ($request->file('file')->isValid()) {
             $filePath = $request->file('file')->store('uploads', 'public');
             $found = $this->checkFile($filePath);
 
-            if (!$found) {
+            if (! $found) {
                 $msg = '[паттерн не найден]';
             }
 
             if ($this->syntax_error) {
                 $msg .= ' [синтаксическая ошибка]';
+
                 return back()->with('error', $msg);
             }
 
             if ($found) {
                 $this->addFile($request->file('file'), $filePath);
                 $msg = '[сохранено]';
-                return back()->with('success', 'Загружено ОК ' . $msg)->with('file', $filePath);
+
+                return back()->with('success', 'Загружено ОК '.$msg)->with('file', $filePath);
             }
         }
+
         return back()->with('error', $msg);
     }
 
-    function checkFile($filePath): bool
+    public function checkFile($filePath): bool
     {
         $data = Storage::disk('public')->get($filePath);
 
         try {
             $xml = simplexml_load_string($data);
             $json = json_encode($xml);
-            $array = json_decode($json, TRUE);
+            $array = json_decode($json, true);
         } catch (\Exception $e) {
-            $this->syntax_error = TRUE;
+            $this->syntax_error = true;
+
             return false;
         }
 
         return $this->parseXML($array);
     }
 
-    function checkComponent($components, &$found = false)
+    public function checkComponent($components, &$found = false)
     {
         $found_id = false;
         $found_error = false;
@@ -109,7 +115,7 @@ class XMLController extends Controller
         //dump($found);
     }
 
-    function parseXML($array, &$found = false): bool
+    public function parseXML($array, &$found = false): bool
     {
         foreach ($array as $key => $value) {
             if (strtolower($key) == 'component' && is_array($value)) {
@@ -117,7 +123,7 @@ class XMLController extends Controller
                 if ($found) {
                     break;
                 }
-            } else if (is_array($value)) {
+            } elseif (is_array($value)) {
                 $this->parseXML($value, $found);
             }
         }
@@ -125,7 +131,7 @@ class XMLController extends Controller
         return $found;
     }
 
-    function addFile($file, $filePath): bool
+    public function addFile($file, $filePath): bool
     {
         $data = Storage::disk('public')->get($filePath);
         $fileName = $file->getClientOriginalName();

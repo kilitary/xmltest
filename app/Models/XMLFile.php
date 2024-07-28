@@ -14,6 +14,6 @@ class XMLFile extends Model
     protected $fillable = [
         'file_name',
         'content',
-        'file_id'
+        'file_id',
     ];
 }
