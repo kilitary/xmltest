@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<Transmission>
+  <Id>{554db2a5-0000a143-000049d6-03b8f890}</Id>
+  <Sender>
+    <Id>1</Id>
+    <Name>RUS-71Y2R72</Name>
+    <User>Default Manager</User>
+    <ExportType>Manual</ExportType>
+  </Sender>
+  <Job Nb="1">
+    <Id>0000000100000004</Id>
+    <Name>Zero-setting (1)</Name>
+    <Type>ZERO</Type>
+    <Samples>1</Samples>
+    <TestDate>22.07.2019</TestDate>
+    <InfoList>
+      <Info Type="CollectionDate">22.07.2019</Info>
+      <Info Type="Sampling">AUTOMATIC</Info>
+    </InfoList>
+    <UserDefinedFieldList>
+    </UserDefinedFieldList>
+    <MeasureProgram>
+      <Name>Zero Product MSC7RM</Name>
+      <ComponentList>
+        <Component Id="030-031-000-000">
+          <Name>FatA(T)</Name>
+          <Unit>%</Unit>
+        </Component>
+        <Component Id="030-032-000-000">
+          <Name>FatB(T)</Name>
+          <Unit>%</Unit>
+        </Component>
+        <Component Id="030-033-000-000">
+          <Name>FatAB(T)</Name>
+          <Unit>%</Unit>
+        </Component>
+        <Component Id="030-034-000-000">
+          <Name>Fat</Name>
+          <Unit>%</Unit>
+        </Component>
+        <Component Id="031-005-000-000">
+          <Name>Prot(T)</Name>
+          <Unit>%</Unit>
+        </Component>
+        <Component Id="031-006-000-000">
+          <Name>Prot.Cru.</Name>
+          <Unit>%</Unit>
+        </Component>
+      </ComponentList>
+    </MeasureProgram>
+  </Job>
+  <ResultList>
+    <JobId>0000000100000004</JobId>
+    <JobName>Zero-setting (1)</JobName>
+    <Result>
+      <Type>ZERO</Type>
+      <SubType>VALUE</SubType>
+      <Date>22.07.2019</Date>
+      <Time>13:12:24</Time>
+      <Id>0000000600010001</Id>
+      <UserDefinedFieldList>
+      </UserDefinedFieldList>
+      <ComponentList>
+        <Component Id="020-001-000-000" ValueType="text">
+          <Value>Zero</Value>
+        </Component>
+        <Component Id="017-001-000-000">
+          <Value>1</Value>
+        </Component>
+        <Component Id="030-031-000-000">
+          <Value>5.84</Value>
+        </Component>
+        <Component Id="030-032-000-000">
+          <Value>3.14</Value>
+        </Component>
+        <Component Id="030-033-000-000">
+          <Value>6.00</Value>
+        </Component>
+      </ComponentList>
+    </Result>
+    <Result>
+      <Type>ZERO</Type>
+      <SubType>MEAN</SubType>
+      <Date>22.07.2019</Date>
+      <Time>13:12:28</Time>
+      <SynNum>1</SynNum>
+      <Id>0000000600010100</Id>
+      <Error>ERROR</Error>
+      <CommentList>
+        <Comment>Zero-setting adjustment required manual review of FatA(T)</Comment>
+        <Comment>Accepted by Default Manager</Comment>
+      </CommentList>
+      <UserDefinedFieldList>
+      </UserDefinedFieldList>
+      <ComponentList>
+        <Component Id="020-001-000-000" ValueType="text">
+          <Value>Mean</Value>
+        </Component>
+        <Component Id="030-031-000-000">
+          <Value>5.838</Value>
+          <Limit>ABOVE</Limit>
+          <Error>ERROR</Error>
+        </Component>
+        <Component Id="030-032-000-000">
+          <Value>3.136</Value>
+          <Limit>ABOVE</Limit>
+          <Error>ERROR</Error>
+        </Component>
+        <Component Id="030-033-000-000">
+          <Value>5.994</Value>
+          <Limit>ABOVE</Limit>
+          <Error>ERROR</Error>
+        </Component>
+      </ComponentList>
+    </Result>
+  </ResultList>
+</Transmission>
