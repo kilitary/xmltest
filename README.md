@@ -23,9 +23,9 @@
 ```
 
 #### Файлы для тестов:
-1. <a href='files/test.xml'>file_1.xml</a> - не соответствует сигнатуре
-2. <a href='files/test.xml'>file_2.xml</a> - верно
-3. <a href='files/test.xml'>file_3.xml</a> - повреждена структура
+1. <a href='files/file_1.xml'>file_1.xml</a> - не соответствует сигнатуре
+2. <a href='files/file_2.xml'>file_2.xml</a> - верно
+3. <a href='files/file_3.xml'>file_3.xml</a> - повреждена структура
 
 ### Пояснения по структуре, условиям и иерархическому соотношению: 
 
